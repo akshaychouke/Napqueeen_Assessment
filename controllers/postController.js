@@ -2,7 +2,7 @@ const Post = require("../models/postsModel.js");
 
 const getAllPosts = async (req, res) => {
   try {
-    v;
+    const posts = await Post.find();
     console.log("The posts are => ", posts);
     return res
       .status(200)
