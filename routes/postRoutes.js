@@ -6,15 +6,15 @@ const {
   createPost,
   updatePost,
   deletePost,
-  getLatestPost,
+  getLatestPosts,
 } = require("../controllers/postController.js");
 
 router.get("/", getAllPosts);
 router.get("/:id", getPostById);
+router.get("/latest", getLatestPosts);
 
 router.post("/", createPost);
 router.put("/:id", updatePost);
 router.delete("/:id", deletePost);
-router.get("/latest", getLatestPost);
 
 module.exports = router;

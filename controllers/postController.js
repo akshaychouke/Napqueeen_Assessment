@@ -3,7 +3,6 @@ const Post = require("../models/postsModel.js");
 const getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find();
-    console.log("The posts are => ", posts);
     return res
       .status(200)
       .json({ msg: "All posts fetched successfully", posts: posts });
@@ -16,7 +15,6 @@ const getPostById = async (req, res) => {
   try {
     const postId = req.params.id;
     const post = await Post.findById(postId);
-    console.log("The post is =>", post);
     return res
       .status(200)
       .json({ msg: "The post fetched successfully", post: post });
@@ -66,14 +64,20 @@ const deletePost = async (req, res) => {
   }
 };
 
-const getLatestPost = async (req, res) => {
+const getLatestPosts = async (req, res) => {
   try {
-    const posts = await Post.find();
-    return res
-      .status(200)
-      .json({ msg: "Latest posts fetched successfully", posts });
+    const posts = await Post.find().sort({ createdAt: -1 }).limit(10);
+    return res.status(200).json({
+      success: true,
+      message: "Latest posts fetched successfully",
+      posts: posts,
+    });
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    console.error("Error fetching latest posts:", error);
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred while fetching latest posts",
+    });
   }
 };
 
@@ -83,5 +87,5 @@ module.exports = {
   createPost,
   updatePost,
   deletePost,
-  getLatestPost,
+  getLatestPosts,
 };
