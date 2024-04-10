@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend API Documentation</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Welcome to the Backend of Blog app</h2>
+        <h3>API Endpoints:</h3>
+        <ul>
+            <li><strong>GET /api/posts:</strong> Retrieve a list of all blog posts.</li>
+            <li><strong>GET /api/posts/:id:</strong> Retrieve a specific blog post by its ID. Include the category of the blog post in the response.</li>
+            <li><strong>POST /api/posts:</strong> Create a new blog post. The request body should contain title, content, and category_id.</li>
+            <li><strong>PUT /api/posts/:id:</strong> Update an existing blog post by its ID. The request body should contain title and content.</li>
+            <li><strong>DELETE /api/posts/:id:</strong> Delete a blog post by its ID.</li>
+            <li><strong>GET /api/posts/latest:</strong> Retrieve the latest blog post from each unique category. Each response object should include id, title, content, created_at, updated_at, and category.</li>
+        </ul>
+    </div>
+</body>
+
+</html>
